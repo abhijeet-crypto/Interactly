@@ -12,6 +12,8 @@ import "reactflow/dist/style.css";
 import { initialEdges, initialNodes } from "./initialNodes";
 import { useReactFlow } from "reactflow";
 
+import { CustomNode, initialCustomNode } from "./CustomNode";
+
 const onLoad = (reactFlowInstance) => {
   reactFlowInstance.fitView();
 };
@@ -28,6 +30,8 @@ const Body = () => {
   const [nodeIdCounter, setNodeIdCounter] = useState(initialNodes.length);
   const [selectedEdge, setSelectedEdge] = useState(null);
   const [hoveredEdge, setHoveredEdge] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [hoveredNode, setHoveredNode] = useState(null);
   const reactFlowWrapper = useRef(null);
   const reactFlowInstance = useReactFlow(reactFlowWrapper);
 
@@ -72,7 +76,26 @@ const Body = () => {
   const handleEdgeClick = (event, edge) => {
     console.log("ege selected");
     setSelectedEdge(edge);
-    handleDeleteEdge();
+    const { clientX, clientY } = event;
+    console.log("Mouse position:", clientX, clientY);
+    setHoveredEdge({ ...edge, position: { x: clientX, y: clientY } });
+  };
+
+  const handleNodeClick = (event, node) => {
+    console.log("node clicked");
+    setSelectedNode(node);
+    const { clientX, clientY } = event;
+    setHoveredNode({ ...node, pos: { x: clientX, y: clientY } });
+  };
+
+  const handleDeleteNode = () => {
+    if (selectedNode) {
+      setNodes((oldNodes) =>
+        oldNodes.filter((node) => node.id !== selectedNode.id)
+      );
+      setHoveredNode(null);
+      setSelectedNode(null);
+    }
   };
 
   const handleDeleteEdge = () => {
@@ -80,19 +103,9 @@ const Body = () => {
       setEdges((oldEdges) =>
         oldEdges.filter((edge) => edge.id !== selectedEdge.id)
       );
+      setHoveredEdge(null);
+      setSelectedEdge(null);
     }
-  };
-
-  const handleEdgeMouseEnter = (event, edge) => {
-    console.log("Mouse entered edge:", edge);
-    // const { clientX, clientY } = event;
-    // console.log("Mouse position:", clientX, clientY);
-    // setHoveredEdge({ ...edge, position: { x: clientX, y: clientY } });
-  };
-
-  const handleEdgeMouseLeave = () => {
-    console.log("leaved");
-    setHoveredEdge(null);
   };
 
   const defaultEdgeOptions = { style: connectionLineStyle, type: "New Node" };
@@ -126,9 +139,8 @@ const Body = () => {
         onConnect={onConnect}
         onLoad={onLoad}
         onEdgeClick={handleEdgeClick}
-        onMouseEnterEdge={handleEdgeMouseEnter}
-        onMouseLeaveEdge={handleEdgeMouseLeave}
         defaultEdgeOptions={defaultEdgeOptions}
+        onNodeClick={handleNodeClick}
         nodeTypes={nodeTypes}
       >
         {/* <MiniMap></MiniMap> */}
@@ -141,12 +153,36 @@ const Body = () => {
           onClick={handleDeleteEdge}
           style={{
             position: "absolute",
-            top: hoveredEdge.position.y,
-            left: hoveredEdge.position.x,
-            transform: "translate(-50%, -50%)", // Adjusting the position to center the button
+            borderRadius: "50%",
+            padding: "2px 8px",
+            top: hoveredEdge.position?.y,
+            left: hoveredEdge.position?.x,
+            transform: "translate(-50%, -50%)",
+            background: "red",
+            color: "white",
+            font: "bold", // Adjusting the position to center the button
           }}
         >
-          Delete Edge
+          X
+        </button>
+      )}
+
+      {hoveredNode && (
+        <button
+          onClick={handleDeleteNode}
+          style={{
+            position: "absolute",
+            borderRadius: "50%",
+            padding: "2px 8px",
+            top: hoveredNode.pos?.y,
+            left: hoveredNode.pos?.x,
+            transform: "translate(-50%, -50%)",
+            background: "red",
+            color: "white",
+            font: "bold", // Adjusting the position to center the button
+          }}
+        >
+          X
         </button>
       )}
     </div>
