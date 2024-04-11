@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# ReactFlow Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Live project demo: https://interactly1.netlify.app
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Introduction
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project implements CRUD (Create, Update, Delete) operations on a graph using the reactflow.dev library in ReactJS Redux. The web page named 'Home' features functionalities such as creating nodes, connecting them with branches, and deleting nodes and branches. 
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- After creating a Node
+- ![image](https://github.com/abhijeet-crypto/Interactly/assets/76946111/33dee254-b9a3-4e64-98b8-0ad9160f8a4a)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- select edge or node that show red cross 
+- ![image](https://github.com/abhijeet-crypto/Interactly/assets/76946111/80813dfd-db78-498e-99c1-cf34db5de683)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  
+- For delete the node or edge just click on red cross. After delete
+- ![image](https://github.com/abhijeet-crypto/Interactly/assets/76946111/7dcb0c76-2462-4887-8e67-adcff6f285a5)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ How can you get started with the project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ How to install project.
+Open a terminal or command prompt and navigate to the directory where you want to clone the project.
+```bash
+git clone https://github.com/abhijeet-crypto/Interactly.git
+npm i
+npm start
